@@ -1,16 +1,14 @@
 [green_agent]
-agentbeats_id = ""
-env = { API_KEY = "${GITHUB_SECRET_NAME}", LOG_LEVEL = "INFO" }
+agentbeats_id = "019bc34d-13c2-7913-9663-5b95d3b4e4b4"
+env = {GOOGLE_API_KEY="$GOOGLE_API_KEY"}
 
 [[participants]]
-agentbeats_id = ""
-name = "role_1_name"
-env = {}
-
-[[participants]]
-agentbeats_id = ""
-name = "role_2_name"
-env = {}
+agentbeats_id = "019b8933-d5b6-76a3-8e0b-930c19c10e87"
+name = "translator"
+env = {GOOGLE_API_KEY="$GOOGLE_API_KEY"}
 
 [config]
 # Add your assessment config here
+source_language = "python"
+target_language = "javascript"
+code_to_translate = "def hello_world():\n    print('Hello, world!')"
