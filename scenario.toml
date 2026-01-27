@@ -1,9 +1,9 @@
 [green_agent]
-image = "code-translator-green"
+image = "samiratra95/code-translator-green-agent:latest"
 env = {GOOGLE_API_KEY="$GOOGLE_API_KEY"}
 
 [[participants]]
-image = "code-translator-purple"
+image = "samiratra95/code-translator-purple-agent:latest"
 name = "researcher"
 env = {GOOGLE_API_KEY="$GOOGLE_API_KEY"}
 
@@ -11,4 +11,42 @@ env = {GOOGLE_API_KEY="$GOOGLE_API_KEY"}
 # Add your assessment config here
 source_language = "python"
 target_language = "javascript"
-code_to_translate = "def hello_world():\n    print('Hello, world!')"
+test_cases = [
+    """
+def process_data(items):
+    \"\"\"
+    Filters items with length > 3 and converts them to uppercase.
+    Returns a list of formatted strings with their original indices.
+    \"\"\"
+    return [
+        f"{idx}: {item.upper()}"
+        for idx, item in enumerate(items)
+        if len(item) > 3
+    ]
+""",
+    """
+class Fibonacci:
+    def __init__(self):
+        self.memo = {}
+
+    def get_number(self, n):
+        if n in self.memo:
+            return self.memo[n]
+        if n <= 1:
+            return n
+        self.memo[n] = self.get_number(n - 1) + self.get_number(n - 2)
+        return self.memo[n]
+""",
+    """
+import re
+
+def parse_log_line(line):
+    # Format: [TIMESTAMP] LEVEL: Message
+    pattern = r"\[(.*?)\] (\w+): (.*)"
+    match = re.match(pattern, line)
+    if match:
+        timestamp, level, message = match.groups()
+        return {"time": timestamp, "level": level, "msg": message}
+    return None
+"""
+]
