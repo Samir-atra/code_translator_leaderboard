@@ -40,13 +40,23 @@ def create_database():
             agent_name = data.get('agent_name')
             timestamp = data.get('timestamp')
             
-            evaluation = data.get('evaluation', {})
-            exe = evaluation.get('execution_correctness')
-            style = evaluation.get('style_score')
-            concise = evaluation.get('conciseness')
-            rel = evaluation.get('relevance')
-            overall = evaluation.get('overall_score')
-            reasoning = evaluation.get('reasoning')
+            # Support both flat and nested structures
+            if 'evaluation' in data:
+                evaluation = data.get('evaluation', {})
+                exe = evaluation.get('execution_correctness')
+                style = evaluation.get('style_score')
+                concise = evaluation.get('conciseness')
+                rel = evaluation.get('relevance')
+                overall = evaluation.get('overall_score')
+                reasoning = evaluation.get('reasoning')
+            else:
+                # Flat structure (scores at top level)
+                exe = data.get('execution_correctness')
+                style = data.get('style_score')
+                concise = data.get('conciseness')
+                rel = data.get('relevance')
+                overall = data.get('overall_score')
+                reasoning = data.get('reasoning')
             
             con.execute("""
                 INSERT INTO results VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
