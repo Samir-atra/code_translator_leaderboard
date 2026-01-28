@@ -1,10 +1,16 @@
 {
-  "agent_name": "translator",
-  "agent_id": "019b8933-d5b6-76a3-8e0b-930c19c10e87",
-  "execution_correctness": 9.0,
-  "style_score": 9.0,
-  "conciseness": 9.0,
-  "relevance": 9.0,
-  "overall_score": 9.0,
-  "reasoning": "Excellent translation of the factorial function."
+  "participants": {
+    "translator": "019b8933-d5b6-76a3-8e0b-930c19c10e87"
+  },
+  "results": [
+    {
+      "winner": "translator",
+      "execution_correctness": 9.0,
+      "style_score": 9.0,
+      "conciseness": 9.0,
+      "relevance": 9.0,
+      "overall_score": 9.0,
+      "reasoning": "Good translation of the factorial function."
+    }
+  ]
 }

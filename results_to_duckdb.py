@@ -40,8 +40,34 @@ def create_database():
             agent_name = data.get('agent_name')
             timestamp = data.get('timestamp')
             
-            # Support both flat and nested structures
-            if 'evaluation' in data:
+            # AgentBeats format: participants dict + results array
+            if 'participants' in data and 'results' in data:
+                # Get participant info
+                participants = data.get('participants', {})
+                agent_name = list(participants.keys())[0] if participants else None
+                agent_id = participants.get(agent_name) if agent_name else None
+                
+                # Get first result from results array
+                results_list = data.get('results', [])
+                if results_list:
+                    result = results_list[0]
+                    exe = result.get('execution_correctness')
+                    style = result.get('style_score')
+                    concise = result.get('conciseness')
+                    rel = result.get('relevance')
+                    overall = result.get('overall_score')
+                    reasoning = result.get('reasoning')
+                else:
+                    continue  # Skip if no results
+                    
+                record_id = f"{agent_name}_{os.path.basename(file_path)}"
+                timestamp = None
+            elif 'evaluation' in data:
+                # Legacy nested format
+                record_id = data.get('id')
+                agent_id = data.get('agent_id')
+                agent_name = data.get('agent_name')
+                timestamp = data.get('timestamp')
                 evaluation = data.get('evaluation', {})
                 exe = evaluation.get('execution_correctness')
                 style = evaluation.get('style_score')
@@ -50,7 +76,11 @@ def create_database():
                 overall = evaluation.get('overall_score')
                 reasoning = evaluation.get('reasoning')
             else:
-                # Flat structure (scores at top level)
+                # Legacy flat format
+                record_id = data.get('id')
+                agent_id = data.get('agent_id')
+                agent_name = data.get('agent_name')
+                timestamp = data.get('timestamp')
                 exe = data.get('execution_correctness')
                 style = data.get('style_score')
                 concise = data.get('conciseness')
