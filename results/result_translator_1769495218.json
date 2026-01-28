@@ -1,15 +1,10 @@
 {
-  "participants": {
-    "translator": "019b8933-d5b6-76a3-8e0b-930c19c10e87"
-  },
-  "results": [
-    {
-      "execution_correctness": 9.0,
-      "style_score": 9.0,
-      "conciseness": 9.0,
-      "relevance": 9.0,
-      "overall_score": 9.0,
-      "reasoning": "The JavaScript code provided by the translator is an excellent and accurate translation of the original Python factorial function. It maintains the exact same recursive logic and functionality."
-    }
-  ]
+  "agent_name": "translator",
+  "agent_id": "019b8933-d5b6-76a3-8e0b-930c19c10e87",
+  "execution_correctness": 9.0,
+  "style_score": 9.0,
+  "conciseness": 9.0,
+  "relevance": 9.0,
+  "overall_score": 9.0,
+  "reasoning": "Excellent translation of the factorial function."
 }

@@ -1,15 +1,10 @@
 {
-  "participants": {
-    "translator": "019b8933-d5b6-76a3-8e0b-930c19c10e87"
-  },
-  "results": [
-    {
-      "execution_correctness": 10.0,
-      "style_score": 8.67,
-      "conciseness": 9.33,
-      "relevance": 10.0,
-      "overall_score": 9.5,
-      "reasoning": "Aggregated Score across 3 test cases. Details: [1/3] Winner: translator. The JavaScript translation is highly accurate. [2/3] Winner: translator. The translation accurately converts the Python Fibonacci class into JavaScript. [3/3] Winner: translator. The translated JavaScript code is a perfect rendition of the original Python code."
-    }
-  ]
+  "agent_name": "translator",
+  "agent_id": "019b8933-d5b6-76a3-8e0b-930c19c10e87",
+  "execution_correctness": 10.0,
+  "style_score": 8.67,
+  "conciseness": 9.33,
+  "relevance": 10.0,
+  "overall_score": 9.5,
+  "reasoning": "Aggregated Score across 3 test cases."
 }
